@@ -2,17 +2,96 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="js/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/ionicons-2.0.1/css/ionicons.css">
 </head>
 
 <body>
-    <div class="p-5">
-        <h1>text</h1>
-        <button class="btn bg-danger">click me</button>
+    <div class="container">
+        <div class="row" id="app-1">
+            <div class="col-12">
+                <header>
+                    <span class="btn btn-danger ml-5" v-on:click="show = !show">click me</span>
+                </header>
+                <aside class="square" v-show="show">
+                </aside>
+                <div>
+                    <table class="table table-bordered table-striped my-4">
+                        <thead class="">
+                            <tr>
+                                <th scope="col" rowspan="3" class="align-middle">#</th>
+                                <th scope="col" rowspan="3" class="align-middle">Maktab Nomi</th>
+                                <th scope="col" rowspan="3" class="text-center align-middle">O'quvchilar soni</th>
+                                <th scope="col" colspan="4" class="text-center">Kelganlar</th>
+                                <th scope="col" colspan="2" class="text-center">Kelmaganlar</th>
+                            </tr>
+                            <tr>
+                                <th scope="col" colspan="2" class="text-center">Kunlik</th>
+                                <th scope="col" colspan="2" class="text-center">Oylik O'rtacha</th>
+                                <th scope="col" rowspan="2" class="text-center align-middle">Kunlik</th>
+                                <th scope="col" rowspan="2" class="text-center align-middle">Oylik O'rtacha</th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="text-center">Soni</th>
+                                <th scope="col" class="text-center">Foizi</th>
+                                <th scope="col" class="text-center">Foizi</th>
+                                <th scope="col" class="text-center">Soni</th>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Kogon tuman 12-maktab</td>
+                                <td class="text-center">980</td>
+                                <td class="text-center">780</td>
+                                <td class="text-center">780</td>
+                                <td class="text-center">780</td>
+                                <td class="text-center">780</td>
+                                <td class="text-center">250</td>
+                                <td class="text-center">250</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td class="text-danger font-weight-bold">Kogon tuman 2-maktab</td>
+                                <td class="text-center">1050</td>
+                                <td class="text-center">500</td>
+                                <td class="text-center">500</td>
+                                <td class="text-center">500</td>
+                                <td class="text-center">500</td>
+                                <td class="text-center">500</td>
+                                <td class="text-center">500</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Kogon tuman 3-maktab</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">80</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">80</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <ol>
+                        <li v-for="item in server | orderBy 'name'"> Ismlari {{ item.name }}, Yoshlari bulsa {{ item.age }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/jquery/dist/jquery.js"></script>
+    <script src="js/lodash.js"></script>
+    <script src="js/vue.js"></script>
     <script src="js/test.js"></script>
+    <script src="js/bootstrap/js/dist/popper/dist/umd/popper.js"></script>
+    <script src="js/bootstrap/dist/js/bootstrap.js"></script>
 </body>
 
 </html>
