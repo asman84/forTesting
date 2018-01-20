@@ -9,13 +9,23 @@
 
 <body>
     <div class="container">
+        <div id="app-2">
+            <div class="d-flex p-3 bg-dark">
+                <span class="mx-2" v-for="item in filters">
+                   <a href="#" class="text-danger"><b v-on:click="chooseCategory(item)">{{ item }}</b></a>
+                </span>
+            </div>
+            <div v-for="todo in sortedTodos">
+                {{ todo.text }}
+            </div>
+        </div>
         <div class="row" id="app-1">
             <div class="col-12">
-                <header>
-                    <span class="btn btn-danger ml-5" v-on:click="show = !show">click me</span>
-                </header>
-                <aside class="square" v-show="show">
-                </aside>
+                <div>
+                    <ol>
+                        <li v-for="item in server"> Ismlari {{ item.name | makeBig }}, Yoshlari bulsa {{ item.birthday | ageIdentify }}</li>
+                    </ol>
+                </div>
                 <div>
                     <table class="table table-bordered table-striped my-4">
                         <thead class="">
@@ -78,16 +88,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    <ol>
-                        <li v-for="item in server | orderBy 'name'"> Ismlari {{ item.name }}, Yoshlari bulsa {{ item.age }}</li>
-                    </ol>
-                </div>
             </div>
         </div>
     </div>
     <script src="js/jquery/dist/jquery.js"></script>
-    <script src="js/lodash.js"></script>
+    <script src="js/moment.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/test.js"></script>
     <script src="js/bootstrap/js/dist/popper/dist/umd/popper.js"></script>
