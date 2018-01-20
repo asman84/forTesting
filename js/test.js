@@ -40,14 +40,14 @@ var app2 = new Vue({
             'today',
             'tomorrow',
         ],
-        active_filter: null,
+        active_filter: 'all',
         todos: [{
                 text: 'call mom',
-                date: '2018-01-20',
+                date: '2018-01-25',
             },
             {
                 text: 'buy apple',
-                date: '2018-01-19',
+                date: '2018-01-22',
             },
             {
                 text: 'read news',
@@ -61,24 +61,48 @@ var app2 = new Vue({
         }
     },
     computed: {
-        sortedTodos: function(this.todos) {
+        testComputed: function() {
             var sortedArr = [];
+            var today = moment().startOf('day');
             if (this.active_filter === 'today') {
                 this.todos.forEach(function(item) {
-                    if (moment().startOf('day').diff(moment(item.date), 'days') === 0) {
+                    if (moment(item.date).diff(today, 'days') === 0) {
                         sortedArr.push(item);
                     }
                 });
             } else if (this.active_filter === 'tomorrow') {
                 this.todos.forEach(function(item) {
-                    if (moment().diff(moment(item.date.), 'days') === 1) {
+                    if (moment(item.date).diff(today, 'days') === 1) {
                         sortedArr.push(item);
                     }
                 });
             } else {
-                sortedArr.push(item);
+                this.todos.forEach(function(item) {
+                    sortedArr.push(item);
+                });
             }
             return sortedArr;
         }
     }
+    // computed: {
+    //     sortedTodos: function(this.todos) {
+    //         var sortedArr = [];
+    //         if (this.active_filter === 'today') {
+    //             this.todos.forEach(function(item) {
+    //                 if (moment().startOf('day').diff(moment(item.date), 'days') === 0) {
+    //                     sortedArr.push(item);
+    //                 }
+    //             });
+    //         } else if (this.active_filter === 'tomorrow') {
+    //             this.todos.forEach(function(item) {
+    //                 if (moment().diff(moment(item.date.), 'days') === 1) {
+    //                     sortedArr.push(item);
+    //                 }
+    //             });
+    //         } else {
+    //             sortedArr.push(item);
+    //         }
+    //         return sortedArr;
+    //     }
+    // }
 });

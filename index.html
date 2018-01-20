@@ -11,12 +11,14 @@
     <div class="container">
         <div id="app-2">
             <div class="d-flex p-3 bg-dark">
-                <span class="mx-2" v-for="item in filters">
-                   <a href="#" class="text-danger"><b v-on:click="chooseCategory(item)">{{ item }}</b></a>
+                <span class="mx-2 text-white" v-for="item in filters" v-on:click="chooseCategory(item)">
+                   <a class="text-white" href="#"><b>{{ item }}</b></a>
                 </span>
             </div>
-            <div v-for="todo in sortedTodos">
-                {{ todo.text }}
+            <div class="bg-dark text-white p-3 my-2">
+                <div v-for="todo in testComputed">
+                    {{ todo.text }}
+                </div>
             </div>
         </div>
         <div class="row" id="app-1">
