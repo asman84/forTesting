@@ -9,7 +9,7 @@
 
 <body>
     <div class="container">
-        <div id="app-2">
+        <div id="app-2" class="sr-only">
             <div class="d-flex p-3 bg-dark">
                 <span class="mx-2 text-white" v-for="item in filters" v-on:click="chooseCategory(item)">
                    <a class="text-white" href="#"><b>{{ item }}</b></a>
@@ -22,16 +22,18 @@
             </div>
         </div>
         <div id="app-3">
-            <div class="bg-warning" v-for="item in sorted">
-                {{ item }}
-            </div>
-            <div class="my-2">
-                <div>
-                    <span> {{lengthOfText}} / 30</span>
+            <div class="sr-only">
+                <div class="bg-warning" v-for="item in sorted">
+                    {{ item }}
                 </div>
-                <textarea placeholder="fill your statement" v-model='text'></textarea>
                 <div class="my-2">
-                    <button v-if="lengthOfText <= 30">Send</button>
+                    <div>
+                        <span> {{lengthOfText}} / 30</span>
+                    </div>
+                    <textarea placeholder="fill your statement" v-model='text'></textarea>
+                    <div class="my-2">
+                        <button v-if="lengthOfText <= 30">Send</button>
+                    </div>
                 </div>
             </div>
             <div class="workWithComponent">
@@ -40,11 +42,14 @@
                         <div class="navbar-nav">
                             <a class="nav-item nav-link" href="#" v-on:click="switchView('odil')">Odil</a>
                             <a class="nav-item nav-link" href="#" v-on:click="switchView('oybek')">Oybek</a>
+                            <a class="nav-item nav-link" href="#" v-on:click="switchView('shamik')">Shamik</a>
                             <a class="nav-item nav-link" href="#" v-on:click="switchView('zafar')">Zafar</a>
                         </div>
                     </div>
                 </nav>
-                <component :is="currentPerson" transition="switch"></component>
+                <transition name="switch" mode="out-in">
+                    <component :is="currentPerson"></component>
+                </transition>
             </div>
         </div>
         <div class="row" id="app-1">
@@ -127,6 +132,11 @@
     <template id="oybek">
         <div class="box bg-danger text-white p-2 text-center">
             <h3>I am Oybek</h3>
+        </div>
+    </template>
+    <template id="shamik">
+        <div class="box bg-danger text-white p-2 text-center">
+            <h3>I am Shamik</h3>
         </div>
     </template>
     <template id="zafar">

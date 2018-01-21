@@ -108,6 +108,9 @@ var app3 = new Vue({
         oybek: {
             template: '#oybek'
         },
+        shamik: {
+            template: '#shamik'
+        },
         zafar: {
             template: '#zafar'
         }
