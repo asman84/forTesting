@@ -21,6 +21,32 @@
                 </div>
             </div>
         </div>
+        <div id="app-3">
+            <div class="bg-warning" v-for="item in sorted">
+                {{ item }}
+            </div>
+            <div class="my-2">
+                <div>
+                    <span> {{lengthOfText}} / 30</span>
+                </div>
+                <textarea placeholder="fill your statement" v-model='text'></textarea>
+                <div class="my-2">
+                    <button v-if="lengthOfText <= 30">Send</button>
+                </div>
+            </div>
+            <div class="workWithComponent">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="#" v-on:click="switchView('odil')">Odil</a>
+                            <a class="nav-item nav-link" href="#" v-on:click="switchView('oybek')">Oybek</a>
+                            <a class="nav-item nav-link" href="#" v-on:click="switchView('zafar')">Zafar</a>
+                        </div>
+                    </div>
+                </nav>
+                <component :is="currentPerson" transition="switch"></component>
+            </div>
+        </div>
         <div class="row" id="app-1">
             <div class="col-12">
                 <div>
@@ -93,6 +119,21 @@
             </div>
         </div>
     </div>
+    <template id="odil">
+        <div class="box bg-danger text-white p-2 text-center">
+            <h3>I am Odil</h3>
+        </div>
+    </template>
+    <template id="oybek">
+        <div class="box bg-danger text-white p-2 text-center">
+            <h3>I am Oybek</h3>
+        </div>
+    </template>
+    <template id="zafar">
+        <div class="box bg-danger text-white p-2 text-center">
+            <h3>I am Zafar</h3>
+        </div>
+    </template>
     <script src="js/jquery/dist/jquery.js"></script>
     <script src="js/moment.js"></script>
     <script src="js/vue.js"></script>

@@ -84,25 +84,45 @@ var app2 = new Vue({
             return sortedArr;
         }
     }
-    // computed: {
-    //     sortedTodos: function(this.todos) {
-    //         var sortedArr = [];
-    //         if (this.active_filter === 'today') {
-    //             this.todos.forEach(function(item) {
-    //                 if (moment().startOf('day').diff(moment(item.date), 'days') === 0) {
-    //                     sortedArr.push(item);
-    //                 }
-    //             });
-    //         } else if (this.active_filter === 'tomorrow') {
-    //             this.todos.forEach(function(item) {
-    //                 if (moment().diff(moment(item.date.), 'days') === 1) {
-    //                     sortedArr.push(item);
-    //                 }
-    //             });
-    //         } else {
-    //             sortedArr.push(item);
-    //         }
-    //         return sortedArr;
-    //     }
-    // }
+});
+Vue.component('my-component', {
+    template: '#my-template-2'
+})
+var app3 = new Vue({
+    el: "#app-3",
+    data: {
+        show: true,
+        array: ['sort', 'chort', 'tort', 'bort', ],
+        text: '',
+        currentPerson: 'oybek'
+    },
+    methods: {
+        switchView: function(item) {
+            this.currentPerson = item;
+        }
+    },
+    components: {
+        odil: {
+            template: '#odil'
+        },
+        oybek: {
+            template: '#oybek'
+        },
+        zafar: {
+            template: '#zafar'
+        }
+    },
+    filters: {
+        sorting: function(item) {
+            return item.split('').sort();
+        }
+    },
+    computed: {
+        sorted: function() {
+            return this.array.sort();
+        },
+        lengthOfText: function() {
+            return this.text.length;
+        }
+    }
 });
